@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div id="post">
+        {% include 'post/_article.html.twig' %}
+    </div>
+    <div id="pagination" class="navigation text-center">
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@post'%}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

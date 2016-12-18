@@ -1,0 +1,34 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
+
+index:
+    path: /
+    defaults: { _controller: AppBundle:Redirecting:redirectToMainPage }
+
+locale_not_specified:
+    path: /{path}
+    defaults: { _controller: AppBundle:Redirecting:redirectToDefaultLanguage }
+    requirements:
+        path: '^(?!%app_locales%|ajax).*$'
+
+show_more_posts:
+    path: /ajax/post/show/more
+    defaults: { _controller: AppBundle:Post:showMore, page: '1' }
+
+show_pagination:
+    path: /ajax/post/show/pagination
+    defaults: { _controller: AppBundle:Post:showPagination, page: '1' }
+    requirements:
+        page: '[1-9]\d*'
+    options:
+        expose: true
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix: /{_locale}

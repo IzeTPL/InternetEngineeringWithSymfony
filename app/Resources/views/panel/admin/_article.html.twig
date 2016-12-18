@@ -1,0 +1,30 @@
+{% for user in users %}
+    {% if app.user != user.username %}
+    <article class="post img-rounded">
+        <h2>
+            <a href="">
+                {{ user.username }}
+            </a>
+            <div class="action">
+                {% if app.user.hasRole('ROLE_SUPER_ADMIN') %}
+                    {% if user.hasRole('ROLE_ADMIN') %}
+                        <a class="btn btn-primary" href="{{ path('user_downgrade', { 'id': user.id }) }}">{{ 'user.downgrade'|trans }}</a>
+                    {% else %}
+                        <a class="btn btn-primary" href="{{ path('user_promote', { 'id': user.id }) }}">{{ 'user.promote'|trans }}</a>
+                    {% endif %}
+                {% endif %}
+                {% if (app.user.hasRole('ROLE_ADMIN') or app.user.hasRole('ROLE_SUPER_ADMIN') ) and not user.hasRole('ROLE_SUPER_ADMIN')%}
+                    {{ render(controller('AppBundle:Admin:createDeleteForm', { 'user': user })) }}
+                {% endif %}
+            </div>
+        </h2>
+        {% if user.hasRole('ROLE_SUPER_ADMIN') %}
+            {{ 'user.role.superadmin'|trans }}
+        {% elseif user.hasRole('ROLE_ADMIN') %}
+            {{ 'user.role.admin'|trans }}
+        {% elseif user.hasRole('ROLE_USER') %}
+            {{ 'user.role.user'|trans }}
+        {% endif %}
+    </article>
+    {% endif %}
+{% endfor %}

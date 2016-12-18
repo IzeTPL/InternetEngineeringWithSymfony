@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <a class="btn btn-default" href="{{ path('multi_blog_index') }}">Back</a>
+        <input class="btn btn-default" type="submit" value="Edit" />
+    {{ form_start(delete_form) }}
+        <input class="btn btn-danger" type="submit" value="Delete" />
+    {{ form_end(delete_form) }}
+    {{ form_end(edit_form) }}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ tinymce_init({
+        theme: {'simple':{'language': app.request.locale, 'height': 500, 'menubar': false }},
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        autosave_ask_before_unload: false,})
+    }}
+{% endblock %}

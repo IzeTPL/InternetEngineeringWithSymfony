@@ -1,0 +1,47 @@
+navbar:
+    login: 'Zaloguj'
+    author: 'Autor'
+    main: 'Strona główna'
+    new: 'Dodaj'
+    admin: 'Panel Administratora'
+
+post:
+    delete: 'Usuń'
+    edit: 'Edytuj'
+    create: 'Utwórz'
+
+login:
+    registration: 'Utwórz Konto'
+
+user:
+    promote: 'Awansuj'
+    delete: 'Usuń'
+    downgrade: 'Zdegraduj'
+    role:
+        user: 'UŻYTKOWNIK'
+        admin: 'ADMINISTRATOR'
+        superadmin: 'ADMINISTRATOR GŁÓWNY'
+
+label:
+    title: 'Tytuł'
+    summary: 'Podsumowanie'
+    content: 'Treść'
+    author: 'Autor'
+    published_at: 'Data publikacji'
+
+http_error:
+    name: 'Błąd %status_code%'
+    description: 'Wystąpił nieznany błąd (HTTP %status_code%), który zablokował żądanie.'
+    suggestion: 'Spróbuj odświeżyć tę stronę za kilka minut lub <a href="%url%">wróć do strony głównej</a>.'
+
+http_error_403:
+    description: "Dostęp do tych zasobów został zabroniony."
+    suggestion: 'Poproś administratora strony o dostęp jeśli go potrzebujesz.'
+
+http_error_404:
+    description: "Strona, którą próbujesz załadować nie istnieje."
+    suggestion: 'Sprawdź czy nie pomyliłeś adresu lub <a href="%url%">wróć do strony głównej</a>.'
+
+http_error_500:
+    description: 'Wystąpił błąd serwera.'
+    suggestion: 'Spróbuj odświeżyć tę stronę za kilka minut or <a href="%url%">wróć do strony głównej</a>.'

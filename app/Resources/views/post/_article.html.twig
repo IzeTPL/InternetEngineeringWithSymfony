@@ -1,0 +1,20 @@
+{% for post in posts %}
+    <article class="post img-rounded {% if app.user == post.author%}author{% endif %}">
+        <h2>
+            <a href="{{ path('post_show', { slug: post.slug }) }}">
+                {{ post.title }}
+            </a>
+            {% if is_granted('ROLE_ADMIN') or app.user == post.author %}
+                <div class="dynamic">
+                    <a class="btn btn-default" href="{{ path('post_edit', { 'id': post.id }) }}">{{ 'post.edit'|trans }}</a>
+                    {{ render(controller('AppBundle:Post:createDeleteForm', { 'post': post })) }}
+                </div>
+            {% endif %}
+        </h2>
+
+        <p>{{ post.summary }}</p>
+        <small>{{ post.author }}</small>
+    </article>
+{% else %}
+    <div class="well">{{ 'post.no_posts_found'|trans }}</div>
+{% endfor %}

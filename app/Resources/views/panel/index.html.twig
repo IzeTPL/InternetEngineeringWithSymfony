@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div id="post">
+        {% include 'panel/_article.html.twig' %}
+    </div>
+    <div id="pagination" class="navigation text-center">
+        {{ pagerfanta(paginator, 'twitter_bootstrap3_translated', { routeName: 'multi_blog_panel_paginated' }) }}
+    </div>
+{% endblock %}

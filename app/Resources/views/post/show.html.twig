@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <article class="post img-rounded">
+        <h2>
+            <a>
+                {{ post.title }}
+            </a>
+            {% if is_granted('ROLE_ADMIN') or app.user == post.author %}
+                <div class="action">
+                    <a class="btn btn-default" href="{{ path('post_edit', { 'id': post.id }) }}">{{ 'post.edit'|trans }}</a>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="{{ 'post.delete'|trans }}">
+                    {{ form_end(delete_form) }}
+                </div>
+            {% endif %}
+        </h2>
+
+        <p>{{ post.content }}</p>
+        <small>{{ post.author }}</small>
+    </article>
+{% endblock %}
